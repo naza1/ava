@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">  
   <head>    
-    <title>Título de la WEB</title>    
+    <title>AVA</title>    
     <meta charset="UTF-8">
-    <meta name="title" content="Título de la WEB">
-    <meta name="description" content="Descripción de la WEB">    
-    <link href="http://dominio.com/hoja-de-estilos.css" rel="stylesheet" type="text/css"/>    
+    <meta name="title" content="AVA - Animales varados">
+    <meta name="description" content="App para fotografiar animales varados">    
+    <link href="style.css" rel="stylesheet" type="text/css"/>    
   </head>  
+ <body>
+ </body>
+ 
+ </html>
+ 
