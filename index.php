@@ -17,7 +17,7 @@
 <!--<input type="hidden" name="latitud" id="latitud" value="<?//print($_POST['latitud']);?>">-->
 <input type="hidden" name="longitud" id="longitud" value="<?print $longitud; ?>"><!--longitud-->
 <!--<input type="hidden" name="longitud" id="longitud" value="<?//print($_POST['longitud']);?>">-->
-<input type="hidden" name="fecha" value="<?php echo $fecha ?>" readonly="readonly"> <!--fecha-->
+<input type="hidden" name="fecha" value="<?php echo $fecha ?>" id="fecha"> <!--fecha-->
 <input type="submit" value="Enviar foto">
 </form>
  </body>
