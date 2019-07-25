@@ -10,5 +10,5 @@ if (!$conn) {
     die("Fallo la conexión " . mysqli_connect_error());
 }
 echo "Conectó bien!";
-mysqli_close($conn);
+
 ?>
