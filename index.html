@@ -1,5 +1,39 @@
 <!DOCTYPE html>
 <html>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+      <script>
+          var x = document.getElementById("demo");
+          
+          function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+              x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+          }
+          
+          function showPosition(position) {
+            $.ajax({
+              type: "POST",
+              url: "test.php",
+              data: {
+                longitud: position.coords.longitude,
+                latitud: position.coords.latitude
+              },
+              success: function(result) {
+                alert(result);
+              },
+              error: function(result) {
+                alert('error');
+              }
+            });
+          }
+      </script>
+          
+    </head>
 <body>
 
 <p>Click the button to get your coordinates.</p>
@@ -8,6 +42,7 @@
 
 <p id="demo"></p>
 
+<<<<<<< HEAD
 <script>
 var x = document.getElementById("demo");
 
@@ -38,6 +73,8 @@ $.ajax({
   }
 });
 </script>
+=======
+>>>>>>> 50397c6f06498405af038b52336cb39d75c9275e
 
 </body>
 </html>
