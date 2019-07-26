@@ -19,7 +19,7 @@
         }
 
         function showPosition(position) {
-          document.getElementById('latitud').value = position.coords.longitude;
+          document.getElementById('latitud').value = position.coords.latitude;
           document.getElementById('longitud').value = position.coords.longitude;
         }
     </script>

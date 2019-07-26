@@ -7,7 +7,7 @@ $fecha = $_POST['fecha'];
 $longitud = $_POST['longitud'];
 $latitud = $_POST['latitud'];
 
-$sql = "INSERT INTO datos (email,comentarios,fecha) VALUES ('$email','$comentarios','$fecha')";
+$sql = "INSERT INTO datos (longitud,latitud,email,comentarios,fecha) VALUES ('$longitud','$latitud','$email','$comentarios','$fecha')";
 if (mysqli_query($conn, $sql)) {
       echo "Su fotografía ha sido enviada";
 } else {
