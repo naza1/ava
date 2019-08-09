@@ -20,6 +20,21 @@
         document.getElementById('longitud').value = position.coords.longitude;
       }
     </script>
+    <!--color de la app-->
+    <meta name="theme-color" content="#CCCCCC"/>
+    <!--Optimización para mobile-->
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+
+    <!-- Para Apple -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Barra de estado de la app -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-traslucent" />
+    <!-- Icono de la app -->
+    <link rel="apple-touch-icon" href="poner donde está como un favicon" />
+    <!--splash screen-->
+    <link rel="apple-touch-startup-image" href="poner donde está como un favicon" />
+    <link rel="manifest" href="/manifest.json" />
 </head>  
 <body>
   <div id="container">
@@ -46,7 +61,19 @@
       FORM.addEventListener('submit', function () {    
         document.getElementById('screenshot').value = canvas.toDataURL("image/png");
       });
+
+    if ('serviceWorker' in navigator) {
+      console.log("Will the service worker register?");
+      navigator.serviceWorker.register('sw.js')
+      .then(function(reg){
+        console.log("Yes, it did.");
+      })
+      .catch(function(err) {
+        console.log("No it didn't. This happened:", err)
+      });
+    }
   </script>
+  
 </body> 
 </html>
  

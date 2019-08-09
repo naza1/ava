@@ -1,0 +1,24 @@
+{
+	"name":"AVA | Animales Varados y Atropellados",
+	"short_name": "AVA",
+	"description": "APP para fotografiar animales varados y atropellados",
+	"background_color": "#56E7A5",
+	"theme_color": "#ffffff",
+	"orientation": "portrait", 
+	"display": "standalone",
+	"start_url": "/?utm_source=homescreen",
+	"scope": "./",
+	"lang": "es-ES",
+	"icons": [
+				{
+					"scr": "./img/favicon-1024.png",
+					"sizes": "1024x1024",
+					"type": "image/png"
+				},
+				{
+					"scr": "./img/favicon-512.png",
+					"sizes": "512x512",
+					"type": "image/png"
+				}
+	]
+}
