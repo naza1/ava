@@ -1,4 +1,0 @@
-Acceso servidor
-URL: https://mipanel.ferozo.com
-usuario: c1600080
-clave: ruDIpige00
