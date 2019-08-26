@@ -1,66 +1,27 @@
 'use strict';
 
-var videoElement = document.querySelector('video');
-var videoSelect = document.querySelector('select#videoSource');
-
-videoSelect.onchange = getStream;
-
-getStream().then(getDevices).then(gotDevices);
-
-function getDevices() {
-  // AFAICT in Safari this only gets default devices until gUM is called :/
-  return navigator.mediaDevices.enumerateDevices();
-}
-
-function gotDevices(deviceInfos) {
-
-  window.deviceInfos = deviceInfos; // make available to console
-  
-  for (const deviceInfo of deviceInfos) {
-    const option = document.createElement('option');
-    option.value = deviceInfo.deviceId;
-   if (deviceInfo.kind === 'videoinput') {
-      option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
-      videoSelect.appendChild(option);
-    }
+ function readFile(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+      reader.onload = function (e) {
+        var filePreview = document.createElement('img');
+        filePreview.id = 'file-preview';
+        //e.target.result contents the base64 data from the image uploaded
+        filePreview.src = e.target.result;
+        var previewZone = document.getElementById('file-preview-zone');
+        while (previewZone.firstChild) {
+          previewZone.removeChild(previewZone.firstChild);
+        }
+        previewZone.appendChild(filePreview);
+        document.getElementById('screenshot').value = e.target.result;
+      } 
+      //const fakePng = new Blob([input.files[0]], {type:'image/png'});
+      reader.readAsDataURL(input.files[0]);
+      //document.getElementById('screenshot').value = reader.result;
   }
 }
-
-function getStream() {
-  if (window.stream) {
-    window.stream.getTracks().forEach(track => {
-      track.stop();
-    });
+ 
+  var fileUpload = document.getElementById('file-upload');
+  fileUpload.onchange = function (e) {
+    readFile(e.srcElement);
   }
-  const videoSource = videoSelect.value;
-  const constraints = {
-    video: {
-      facingMode: 'environment'
-    }
-  };
-
-  return navigator.mediaDevices.getUserMedia(constraints).then(gotStream).catch(handleError);
-}
-
-function gotStream(stream) {
-  window.stream = stream; // make stream available to console
-
-  videoSelect.selectedIndex = [...videoSelect.options].
-    findIndex(option => option.text === stream.getVideoTracks()[0].label);
-  videoElement.srcObject = stream;
-}
-
-function handleError(error) {
-  console.error('Error: ', error);
-}
-
-// Take screenshot
-const screenshotButton = document.querySelector('#screenshot-button');
-const video = document.getElementById('video');
-const canvas = document.getElementById('canvas');
-  
-var context = canvas.getContext('2d');
-
-screenshotButton.addEventListener("click", function() {
-  context.drawImage(video, 0, 0, 640, 480);
-});
