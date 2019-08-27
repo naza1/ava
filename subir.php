@@ -76,15 +76,11 @@
   $latitud = $_POST['latitud'];
   $fecha = date("Y-m-d H:i:s");
 
-  // image
+  // // image
   $target_path = "images/";
-  $img = $_POST['screenshot'];
-  $img = str_replace('data:image/jpeg;base64,', '', $img);
-  $img = str_replace(' ', '+', $img);
-  $data = base64_decode($img);
-  $fileName = 'ava_'.date('m-d-Y_hia').".jpg";
-  $file = $target_path.$fileName;
-  $success = file_put_contents($file, $data);
+  $target_path2 = $target_path . basename($_FILES['screenshot']['name']);
+  move_uploaded_file($_FILES['screenshot']['tmp_name'], $target_path2);
+  $fileName = 'ava_'.date('m-d-Y_hia') . $_FILES['screenshot']['name'];
 
   $sql = "INSERT INTO datos (longitud, latitud, email, comentarios, fecha, nombre_foto) 
         VALUES ('$longitud','$latitud','$email','$comentarios','$fecha', '$fileName')";

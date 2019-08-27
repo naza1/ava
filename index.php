@@ -4,11 +4,6 @@
   <script>
     window.onload = function() {
       getLocation ();
-      const FORM = document.querySelector('#form');  
-      FORM.addEventListener('submit', function () {    
-        //document.getElementById('screenshot').value = canvas.toDataURL("image/png");
-        //document.getElementById('screenshot').value = document.getElementById('file-preview').getAttribute('src');
-      });
     };
 
     function getLocation() {
@@ -72,7 +67,6 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <link rel="manifest" href="manifest.json">
-  <script async src="js/main.js"></script>
 </head> 
 <body>
 <header>
@@ -105,7 +99,7 @@
 			<label for="file-upload">
 				<img src="img/boton_pic.png"/>
 			</label>
-				<input type="file" accept="image/jpeg" capture="camera" id="file-upload">
+				
 		</div>
 </div>
  <!--formulario-->
@@ -117,6 +111,7 @@
 				<input type="hidden" name="latitud" id="latitud" value="">
 				<input type="hidden" name="longitud" id="longitud" value="">
 				<input type="hidden" name="screenshot" id="screenshot" value="">
+        <input style="visibility: hidden;" type="file" accept="image/*" capture="camera" id="file-upload" name="screenshot">
 	</div>
 				  
  </div>		
@@ -133,7 +128,7 @@
 		</div>
 	</div>
 </div>
-
+<script async src="js/main.js"></script>
 </body> 
 </html>
  
