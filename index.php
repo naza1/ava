@@ -112,21 +112,21 @@
 				<input type="hidden" name="longitud" id="longitud" value="">
 				<input type="hidden" name="screenshot" id="screenshot" value="">
         <input style="visibility: hidden;" type="file" accept="image/*" capture="camera" id="file-upload" name="screenshot">
-	</div>
-				  
- </div>		
- <!--botón enviar--> 
-<div class="wrap">
+ 		
+      <!--botón enviar--> 
+      <div class="wrap">
 				<input type="submit" value="ENVIAR FOTO" class="button"/>
-		</form>
+      </div>
+    </form>
+  </div>
 </div>
  <!--footer--> 			  
 <div class="footer-bottom">
      	<div class="wrap">
         <div class="copy">
-		    <p class="copy">AVA: Animales Varados y Atropellados. <br/>Copyright 2019</p>
-		</div>
-	</div>
+		      <p class="copy">AVA: Animales Varados y Atropellados. <br/>Copyright 2019</p>
+		    </div>
+	    </div>
 </div>
 <script async src="js/main.js"></script>
 </body> 
