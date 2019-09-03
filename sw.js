@@ -9,11 +9,9 @@ var urlsToCache = ['./',];
 self.addEventListener('install', e => {
 	e.waitUntil(
 		caches.open(CACHE_NAME)
-		.then(cache => {
-			return cache.addAll(urlsToCache)
-				.then (() => {
-					self.skipWaiting();
-				});
+		.then(async cache => {
+			await cache.addAll(urlsToCache);
+			self.skipWaiting();
 		})
 		.catch(err => console.log('No se ha registrado la cache', err))
 	);
@@ -73,18 +71,22 @@ this.addEventListener('fetch', function(e) {
 	return fetchFromNetworkAndCache(e);
   }
 
-  function fetchFromNetworkAndCache(e) {
-	return fetch(e.request).then(res => {
-	  // foreign requests may be res.type === 'opaque' and missing a url
-	  if (!res.url) return res;
-	  // regardless, we don't want to cache other origin's assets
-	  if (new URL(res.url).origin !== location.origin) return res;
-  
-	  return caches.open(VERSION).then(cache => {
-		// TODO: figure out if the content is new and therefore the page needs a reload.
-		cache.put(e.request, res.clone());
-		return res;
-	  });
-	}).catch(err => console.error(e.request.url, err));
+  async function fetchFromNetworkAndCache(e) {
+	try {
+		  const res = await fetch(e.request);
+		  // foreign requests may be res.type === 'opaque' and missing a url
+		  if (!res.url)
+			  return res;
+		  // regardless, we don't want to cache other origin's assets
+		  if (new URL(res.url).origin !== location.origin)
+			  return res;
+		  const cache = await caches.open(VERSION);
+		  // TODO: figure out if the content is new and therefore the page needs a reload.
+		  cache.put(e.request, res.clone());
+		  return res;
+	  }
+	  catch (err) {
+		  return console.error(e.request.url, err);
+	  }
   }
 

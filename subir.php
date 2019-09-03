@@ -10,9 +10,9 @@
 
   // // image
   $target_path = "images/";
-  $target_path2 = $target_path . basename($_FILES['screenshot']['name']);
-  move_uploaded_file($_FILES['screenshot']['tmp_name'], $target_path2);
   $fileName = 'ava_'.date('m-d-Y_hia') . $_FILES['screenshot']['name'];
+  $target_path2 = $target_path . $fileName;
+  move_uploaded_file($_FILES['screenshot']['tmp_name'], $target_path2);
 
   $sql = "INSERT INTO datos (longitud, latitud, email, comentarios, fecha, nombre_foto) 
         VALUES ('$longitud','$latitud','$email','$comentarios','$fecha', '$fileName')";
